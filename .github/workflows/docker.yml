@@ -2,7 +2,7 @@ name: Docker CI - clientes-front
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
