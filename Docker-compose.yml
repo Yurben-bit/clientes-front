@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  clientes-front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clientes-front:latest
+    ports:
+      - "80:80"
+    restart: unless-stopped
