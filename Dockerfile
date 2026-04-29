@@ -1,5 +1,5 @@
 # 1️⃣ Etapa de construcción
-FROM node:20-alpine AS build
+FROM node:20 AS build
 
 # Establecer directorio de trabajo
 WORKDIR /app
@@ -13,14 +13,11 @@ RUN npm install
 # Copiar el resto del código
 COPY . .
 
-ARG VITE_API_URL
-ENV VITE_API_URL=${VITE_API_URL}
-
 # Construir la aplicación para producción
 RUN npm run build
 
 # 2️⃣ Etapa de servidor
-FROM nginx:stable-alpine
+FROM nginx:alpine
 
 # Copiar archivos de build al directorio de Nginx
 COPY --from=build /app/build /usr/share/nginx/html
