@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Construir la aplicación para producción
-RUN npm run build
+RUN npm run build && if [ -d dist ]; then mv dist build; fi
 
 # 2️⃣ Etapa de servidor
 FROM nginx:alpine
